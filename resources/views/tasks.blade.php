@@ -70,18 +70,23 @@
 
                     <!-- 削除ボタン -->
                     <td>
-                        <div style="display:inline-flex">
-                            <form action="{{ route('task.destroy', ['id' => $task->id ]) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-
-                                <button class="btn btn-danger" onclick="return window.confirm('削除しますか？');">
-                                    タスク削除
-                                </button>
-                            </form>
-                            <form action="{{ route('task.edit', ['id' => $task->id])}}" method="GET">
-                                <button class="btn btn-warning">タスク編集</button>
-                            </form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <form action="{{ route('task.destroy', ['id' => $task->id ]) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-danger" onclick="return window.confirm('削除しますか？');">
+                                            タスク削除
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="col">
+                                    <form action="{{ route('task.edit', ['id' => $task->id])}}" method="GET">
+                                        <button class="btn btn-warning">タスク編集</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>
