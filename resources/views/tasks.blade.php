@@ -8,6 +8,9 @@
     <!-- バリデーションエラーの表示 -->
     @include('common.errors')
 
+    <!-- メッセージの表示 -->
+    @include('common.message')
+
     <!-- 新タスクフォーム -->
     <form action="/task" method="POST" class="form-horizontal">
         {{ csrf_field() }}

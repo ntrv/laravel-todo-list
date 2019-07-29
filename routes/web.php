@@ -30,11 +30,11 @@ Route::post('/task', function (Request $request) {
     $task = new Task;
     $task->name = $request->name;
     $task->save();
-    return redirect('/');
+    return redirect('/')->with('message', '追加完了しました');
 });
 
 Route::delete('/task/{id}', function ($id) {
     Task::findOrFail($id)->delete();
-    return redirect('/');
+    return redirect('/')->with('message', '削除完了しました');
 });
 
