@@ -1,5 +1,8 @@
 <?php
 
+use App\Task;
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +15,26 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+
+    return view('tasks', [
+        'tasks' => $tasks,
+    ]);
 });
+
+Route::post('/task', function (Request $request) {
+    $request->validate([
+        'name' => 'required|max:255',
+    ]);
+
+    $task = new Task;
+    $task->name = $request->name;
+    $task->save();
+    return redirect('/');
+});
+
+Route::delete('/task/{id}', function ($id) {
+    Task::findOrFail($id)->delete();
+    return redirect('/');
+});
+
