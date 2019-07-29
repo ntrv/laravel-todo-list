@@ -55,9 +55,9 @@
 
             <!-- テーブルボディー -->
             <tbody>
-                @foreach ($tasks as $idx => $task)
+                @foreach ($tasks as $task)
                 <tr>
-                    <th scope="row">{{ $idx + 1 }}</th>
+                    <th scope="row">{{ $loop->iteration }}</th>
 
                     <!-- タスク名 -->
                     <td class="table-text">
