@@ -12,7 +12,7 @@
     @include('common.message')
 
     <!-- 新タスクフォーム -->
-    <form action="/task" method="POST" class="form-horizontal">
+    <form action={{ route('task.store') }} method="POST" class="form-horizontal">
         {{ csrf_field() }}
 
         <!-- タスク名 -->
@@ -70,7 +70,7 @@
 
                     <!-- 削除ボタン -->
                     <td>
-                        <form action="/task/{{ $task->id }}" method="POST">
+                        <form action="{{ route('task.destroy', ['id' => $task->id ]) }}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 

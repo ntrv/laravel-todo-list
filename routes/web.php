@@ -1,6 +1,6 @@
 <?php
 
-use App\Task;
+// use App\Http\Controllers\TaskController;
 use Illuminate\Http\Request;
 
 /*
@@ -14,27 +14,5 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-
-    return view('tasks', [
-        'tasks' => $tasks,
-    ]);
-});
-
-Route::post('/task', function (Request $request) {
-    $request->validate([
-        'name' => 'required|max:255',
-    ]);
-
-    $task = new Task;
-    $task->name = $request->name;
-    $task->save();
-    return redirect('/')->with('message', '追加完了しました');
-});
-
-Route::delete('/task/{id}', function ($id) {
-    Task::findOrFail($id)->delete();
-    return redirect('/')->with('message', '削除完了しました');
-});
+Route::resource('task', 'TaskController', ['only' => ['index', 'store', 'destroy']]);
 
