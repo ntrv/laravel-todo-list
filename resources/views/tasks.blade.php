@@ -47,6 +47,7 @@
 
             <!-- テーブルヘッダー -->
             <thead class="thead-dark">
+                <th scope="col">#</th>
                 <th scope="col">Task</th>
                 <th scope="col">CreatedAt</th>
                 <th scope="col">Delete</th>
@@ -54,8 +55,10 @@
 
             <!-- テーブルボディー -->
             <tbody>
-                @foreach ($tasks as $task)
+                @foreach ($tasks as $idx => $task)
                 <tr>
+                    <th scope="row">{{ $idx + 1 }}</th>
+
                     <!-- タスク名 -->
                     <td class="table-text">
                         <div>{{ $task->name }}</div>
@@ -71,7 +74,9 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
-                            <button class="btn btn-danger">タスク削除</button>
+                            <button class="btn btn-danger" onclick="return window.confirm('削除しますか？');">
+                                タスク削除
+                            </button>
                         </form>
                     </td>
                 </tr>
