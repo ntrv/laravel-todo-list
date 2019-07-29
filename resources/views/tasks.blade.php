@@ -45,6 +45,7 @@
             <!-- テーブルヘッダー -->
             <thead class="thead-dark">
                 <th scope="col">Task</th>
+                <th scope="col">CreatedAt</th>
                 <th scope="col">Delete</th>
             </thead>
 
@@ -55,6 +56,10 @@
                     <!-- タスク名 -->
                     <td class="table-text">
                         <div>{{ $task->name }}</div>
+                    </td>
+
+                    <td class="table-text">
+                        <div>{{ $task->created_at }}</div>
                     </td>
 
                     <!-- 削除ボタン -->
