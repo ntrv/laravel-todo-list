@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Task;
 use Illuminate\Http\Request;
+use App\Http\Requests\TaskInputRequest;
 
 class TaskController extends Controller
 {
@@ -37,12 +38,8 @@ class TaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TaskInputRequest $request)
     {
-        $request->validate([
-            'name' => 'required|max:255',
-        ]);
-
         $task = new Task;
         $task->name = $request->name;
         $task->save();
@@ -78,7 +75,7 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Task $task)
+    public function update(TaskInputRequest $request, Task $task)
     {
         $task->name = $request->name;
         $task->update();
