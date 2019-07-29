@@ -50,7 +50,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Task</th>
                 <th scope="col">CreatedAt</th>
-                <th scope="col">Delete</th>
+                <th scope="col">Action</th>
             </thead>
 
             <!-- テーブルボディー -->
@@ -70,14 +70,19 @@
 
                     <!-- 削除ボタン -->
                     <td>
-                        <form action="{{ route('task.destroy', ['id' => $task->id ]) }}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
+                        <div style="display:inline-flex">
+                            <form action="{{ route('task.destroy', ['id' => $task->id ]) }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
 
-                            <button class="btn btn-danger" onclick="return window.confirm('削除しますか？');">
-                                タスク削除
-                            </button>
-                        </form>
+                                <button class="btn btn-danger" onclick="return window.confirm('削除しますか？');">
+                                    タスク削除
+                                </button>
+                            </form>
+                            <form action="{{ route('task.edit', ['id' => $task->id])}}" method="GET">
+                                <button class="btn btn-warning">タスク編集</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
