@@ -24,7 +24,7 @@
         <!-- タスク追加ボタン -->
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-6">
-                <button type="submit" class="btn btn-default">
+                <button type="submit" class="btn btn-primary btn-lg">
                     <i class="fa fa-plus"></i> タスク追加
                 </button>
             </div>
@@ -43,9 +43,9 @@
         <table class="table table-striped task-table">
 
             <!-- テーブルヘッダー -->
-            <thead>
-                <th>Task</th>
-                <th>&nbsp;</th>
+            <thead class="thead-dark">
+                <th scope="col">Task</th>
+                <th scope="col">Delete</th>
             </thead>
 
             <!-- テーブルボディー -->
@@ -63,7 +63,7 @@
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
 
-                            <button>タスク削除</button>
+                            <button class="btn btn-danger">タスク削除</button>
                         </form>
                     </td>
                 </tr>
