@@ -80,7 +80,9 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $task->name = $request->name;
+        $task->update();
+        return redirect()->route('task.index')->with('message', '編集完了しました');
     }
 
     /**

@@ -14,5 +14,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::resource('task', 'TaskController', ['only' => ['index', 'store', 'destroy', 'edit']]);
-
+Route::resource('task', 'TaskController', [
+    'only' => ['index', 'store', 'destroy', 'edit', 'update', 'edit']
+]);
