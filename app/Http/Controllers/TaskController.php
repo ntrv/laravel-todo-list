@@ -46,7 +46,7 @@ class TaskController extends Controller
         $task = new Task;
         $task->name = $request->name;
         $task->save();
-        return redirect('/task')->with('message', '追加完了しました');
+        return redirect()->route('task.index')->with('message', '追加完了しました');
     }
 
     /**
@@ -92,6 +92,6 @@ class TaskController extends Controller
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect('/task')->with('message', '削除完了しました');
+        return redirect()->route('task.index')->with('message', '削除完了しました');
     }
 }
